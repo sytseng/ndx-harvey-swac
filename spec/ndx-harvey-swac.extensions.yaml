@@ -1,0 +1,58 @@
+groups:
+- neurodata_type_def: LabMetaDataExtension
+  neurodata_type_inc: LabMetaData
+  name: harvey_lab_swac_metadata
+  doc: extension type for storing harvey lab swac metadata metadata
+  groups:
+  - name: TaskParam
+    doc: Parameters of the Virmen maze and task structure
+    attributes:
+    - name: maze_stem_length
+      dtype: float
+      doc: The length of the maze stem in Virmen unit
+    - name: maze_stem_width
+      dtype: float
+      doc: The width of the maze stem in Virmen unit
+    - name: maze_arm_length
+      dtype: float
+      doc: The length of the maze arm in Virmen unit
+    - name: maze_arm_width
+      dtype: float
+      doc: The width of the maze arm in Virmen unit
+    - name: cue_delay_length
+      dtype: float
+      doc: The length of the cue delay (before the maze arms) in Virmen unit
+    - name: wall_height
+      dtype: float
+      doc: The height of the maze walls in Virmen unit
+    - name: max_position
+      dtype: float
+      doc: The maximum forwar position that the maze extends (hideCuePast) in Virmen
+        unit
+    - name: frac_non_visually_guided_trials
+      dtype: float
+      doc: The fraction of non visually guided trials
+    - name: choice_bias_penalty
+      dtype: float
+      doc: The choice bias penalty
+    - name: feedback_delay
+      dtype: float
+      doc: The length of the feedback delay in seconds
+    - name: reward_delay
+      dtype: float
+      doc: The length of the reward delay in seconds
+    - name: iti_correct
+      dtype: float
+      doc: The length of inter-trial intervals in seconds for correct trials
+    - name: iti_incorrect
+      dtype: float
+      doc: The length of inter-trial intervals in seconds for incorrect trials
+  - name: AAVretroInjSite
+    doc: Injection sites of the AAVretro
+    attributes:
+    - name: mTagBFP2
+      dtype: text
+      doc: Injection sites for AAV2retro-Syn-mTagBFP2
+    - name: mScarlet
+      dtype: text
+      doc: Injection sites for AAV2retro-Syn-mScarlet

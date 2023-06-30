@@ -1,0 +1,13 @@
+namespaces:
+- author:
+  - Shih-Yi Tseng
+  contact:
+  - shihyitseng41@gmail.com
+  doc: NWB extension for SWAC project in Harvey Lab
+  name: ndx-harvey-swac
+  schema:
+  - namespace: core
+    neurodata_types:
+    - LabMetaData
+  - source: ndx-harvey-swac.extensions.yaml
+  version: 0.1.0
