@@ -59,7 +59,7 @@ def _copy_spec_files(project_dir):
     ns_path = os.path.join(project_dir, 'spec', 'ndx-harvey-swac.namespace.yaml')
     ext_path = os.path.join(project_dir, 'spec', 'ndx-harvey-swac.extensions.yaml')
 
-    dst_dir = os.path.join(project_dir, 'src', 'pynwb', 'ndx_harvey_swac', 'spec')
+    dst_dir = os.path.join(project_dir, 'src', 'pynwb', 'ndx-harvey-swac', 'spec')
     if not os.path.exists(dst_dir):
         os.mkdir(dst_dir)
 
