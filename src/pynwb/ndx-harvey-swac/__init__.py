@@ -24,4 +24,4 @@ load_namespaces(ndx_harvey_swac_specpath)
 # TODO: import your classes here or define your class using get_class to make
 # them accessible at the package level
 # TetrodeSeries = get_class('TetrodeSeries', 'ndx-harvey-swac')
-LabMetaDataExtensionExample = get_class('LabMetaDataExtension', 'ndx-harvey-swac')
+LabMetaDataExtension = get_class('LabMetaDataExtension', 'ndx-harvey-swac')
