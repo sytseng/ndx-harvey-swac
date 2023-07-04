@@ -45,7 +45,7 @@ def main():
     labmetadata_ext = NWBGroupSpec(
         name='harvey_lab_swac_metadata',
         doc='extension type for storing harvey lab swac metadata metadata',
-        neurodata_type_def='LabMetaDataExtension',
+        neurodata_type_def='LabMetaDataSession',
         neurodata_type_inc='LabMetaData',
     )
     
@@ -99,25 +99,36 @@ def main():
                 dtype='float'
             ),
             NWBAttributeSpec(
-                name='feedback_delay',
+                name='feedback_delay_sec',
                 doc='The length of the feedback delay in seconds',
                 dtype='float'
             ),
             NWBAttributeSpec(
-                name='reward_delay',
+                name='reward_delay_sec',
                 doc='The length of the reward delay in seconds',
                 dtype='float'
             ),
             NWBAttributeSpec(
-                name='iti_correct',
+                name='iti_correct_sec',
                 doc='The length of inter-trial intervals in seconds for correct trials',
                 dtype='float'
             ),
             NWBAttributeSpec(
-                name='iti_incorrect',
+                name='iti_incorrect_sec',
                 doc='The length of inter-trial intervals in seconds for incorrect trials',
                 dtype='float'
             ),
+            NWBAttributeSpec(
+                name='switches',
+                doc='Trial number when a rule switch happened',
+                dtype='int',
+                shape=(None,)
+            ),
+            NWBAttributeSpec(
+                name='initial_rule',
+                doc='The rule of the first block',
+                dtype='text'
+            )
         ],
     ) 
     
@@ -137,8 +148,71 @@ def main():
             )
         ],
     )
+    
+    labmetadata_ext.add_group(
+        name='Imaging',
+        doc='Information of calcium imaging',
+        attributes=[
+            NWBAttributeSpec(
+                name='imaging_type',
+                doc='Imaging type: plane or volume',
+                dtype='text'
+            ),
+            NWBAttributeSpec(
+                name='num_of_frame_per_volume',
+                doc='Number of frames per volume (the last frame is fly-back)',
+                dtype='int'
+            ),
+            NWBAttributeSpec(
+                name='num_of_imaging_plane',
+                doc='Number of imaging plane',
+                dtype='int'
+            ),
+            NWBAttributeSpec(
+                name='cortical_layer',
+                doc='Cortical layer of the imaging FOV',
+                dtype='text'
+            )
+        ],
+    )
 
-
+    labmetadata_ext.add_group(
+        name='Registration',
+        doc='Information of registrating imaging FOV to CCF',
+        attributes=[
+            NWBAttributeSpec(
+                name='fov_center_area',
+                doc='FOV center area',
+                dtype='text'
+            ),
+            NWBAttributeSpec(
+                name='fov_center_ml_ccf_mm',
+                doc='FOV center location along ML axis in CCF (mm from bregma)',
+                dtype='float'
+            ),
+            NWBAttributeSpec(
+                name='fov_center_ap_ccf_mm',
+                doc='FOV center location along AP axis in CCF (mm from bregma)',
+                dtype='float'
+            ),
+            NWBAttributeSpec(
+                name='fov_depth_mm',
+                doc='Depth of the FOV top plane (mm below pia)',
+                dtype='float'
+            ),
+            NWBAttributeSpec(
+                name='fov_plane_step_size_mm',
+                doc='Step size between imaging planes in mm for volume imaging',
+                dtype='float'
+            ),
+            NWBAttributeSpec(
+                name='fov_to_ccf_transformation_matrix',
+                doc='Transformation matrix for transforming a column vector of FOV pixel coordiate ([x,y,1].T) to [ml, ap, _] in mm in CCF',
+                dtype='float',
+                shape=(3,3),
+            )
+        ],
+    )
     
     
     # TODO: add all of your new data types to this list

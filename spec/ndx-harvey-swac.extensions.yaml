@@ -1,5 +1,5 @@
 groups:
-- neurodata_type_def: LabMetaDataExtension
+- neurodata_type_def: LabMetaDataSession
   neurodata_type_inc: LabMetaData
   name: harvey_lab_swac_metadata
   doc: extension type for storing harvey lab swac metadata metadata
@@ -35,18 +35,26 @@ groups:
     - name: choice_bias_penalty
       dtype: float
       doc: The choice bias penalty
-    - name: feedback_delay
+    - name: feedback_delay_sec
       dtype: float
       doc: The length of the feedback delay in seconds
-    - name: reward_delay
+    - name: reward_delay_sec
       dtype: float
       doc: The length of the reward delay in seconds
-    - name: iti_correct
+    - name: iti_correct_sec
       dtype: float
       doc: The length of inter-trial intervals in seconds for correct trials
-    - name: iti_incorrect
+    - name: iti_incorrect_sec
       dtype: float
       doc: The length of inter-trial intervals in seconds for incorrect trials
+    - name: switches
+      dtype: int
+      shape:
+      - null
+      doc: Trial number when a rule switch happened
+    - name: initial_rule
+      dtype: text
+      doc: The rule of the first block
   - name: AAVretroInjSite
     doc: Injection sites of the AAVretro
     attributes:
@@ -56,3 +64,43 @@ groups:
     - name: mScarlet
       dtype: text
       doc: Injection sites for AAV2retro-Syn-mScarlet
+  - name: Imaging
+    doc: Information of calcium imaging
+    attributes:
+    - name: imaging_type
+      dtype: text
+      doc: 'Imaging type: plane or volume'
+    - name: num_of_frame_per_volume
+      dtype: int
+      doc: Number of frames per volume (the last frame is fly-back)
+    - name: num_of_imaging_plane
+      dtype: int
+      doc: Number of imaging plane
+    - name: cortical_layer
+      dtype: text
+      doc: Cortical layer of the imaging FOV
+  - name: Registration
+    doc: Information of registrating imaging FOV to CCF
+    attributes:
+    - name: fov_center_area
+      dtype: text
+      doc: FOV center area
+    - name: fov_center_ml_ccf_mm
+      dtype: float
+      doc: FOV center location along ML axis in CCF (mm from bregma)
+    - name: fov_center_ap_ccf_mm
+      dtype: float
+      doc: FOV center location along AP axis in CCF (mm from bregma)
+    - name: fov_depth_mm
+      dtype: float
+      doc: Depth of the FOV top plane (mm below pia)
+    - name: fov_plane_step_size_mm
+      dtype: float
+      doc: Step size between imaging planes in mm for volume imaging
+    - name: fov_to_ccf_transformation_matrix
+      dtype: float
+      shape:
+      - 3
+      - 3
+      doc: Transformation matrix for transforming a column vector of FOV pixel coordiate
+        ([x,y,1].T) to [ml, ap, _] in mm in CCF
