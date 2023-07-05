@@ -26,7 +26,7 @@ The `LabMetaDataSession` contains information about the task parameters (`TaskPa
 
 
 
-The `LabMetaDataMouse` is for reading metadata in the NWB files for individual mice that contain the widefield retinotopy and vessel image of the cranial window under two photon microscope. Load the class before reading the NWB file:
+The other type of extension, the `LabMetaDataMouse`, is for reading metadata in the NWB files for individual mice that contain the widefield retinotopy and vessel image of the cranial window under two photon microscope. Load the class before reading the NWB file:
 ```python
 from ndx_harvey_swac import LabMetaDataMouse
 ```
