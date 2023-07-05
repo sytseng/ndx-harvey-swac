@@ -25,3 +25,5 @@ load_namespaces(ndx_harvey_swac_specpath)
 # them accessible at the package level
 # TetrodeSeries = get_class('TetrodeSeries', 'ndx-harvey-swac')
 LabMetaDataSession = get_class('LabMetaDataSession', 'ndx-harvey-swac')
+LabMetaDataMouse = get_class('LabMetaDataMouse', 'ndx-harvey-swac')
+

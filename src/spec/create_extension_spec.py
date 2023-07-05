@@ -42,14 +42,15 @@ def main():
 #         ],
 #     )
     
-    labmetadata_ext = NWBGroupSpec(
-        name='harvey_lab_swac_metadata',
-        doc='extension type for storing harvey lab swac metadata metadata',
+    # create lab metadata for session level data
+    labmetadata_ext_session = NWBGroupSpec(
+        name='harvey_lab_swac_metadata_session',
+        doc='extension type for storing harvey lab swac metadata for individual sessions',
         neurodata_type_def='LabMetaDataSession',
         neurodata_type_inc='LabMetaData',
     )
     
-    labmetadata_ext.add_group(
+    labmetadata_ext_session.add_group(
         name='TaskParam',
         doc='Parameters of the Virmen maze and task structure',
         attributes=[
@@ -132,7 +133,7 @@ def main():
         ],
     ) 
     
-    labmetadata_ext.add_group(
+    labmetadata_ext_session.add_group(
         name='AAVretroInjSite',
         doc='Injection sites of the AAVretro',
         attributes=[
@@ -149,7 +150,7 @@ def main():
         ],
     )
     
-    labmetadata_ext.add_group(
+    labmetadata_ext_session.add_group(
         name='Imaging',
         doc='Information of calcium imaging',
         attributes=[
@@ -176,7 +177,7 @@ def main():
         ],
     )
 
-    labmetadata_ext.add_group(
+    labmetadata_ext_session.add_group(
         name='Registration',
         doc='Information of registrating imaging FOV to CCF',
         attributes=[
@@ -214,9 +215,56 @@ def main():
         ],
     )
     
+    # create lab metadata for mouse level data
+    labmetadata_ext_mouse = NWBGroupSpec(
+        name='harvey_lab_swac_metadata_mouse',
+        doc='extension type for storing harvey lab swac metadata for individual mice',
+        neurodata_type_def='LabMetaDataMouse',
+        neurodata_type_inc='LabMetaData',
+    )
+    
+    labmetadata_ext_mouse.add_group(
+        name='Registration',
+        doc='Information of registrating cranial window vessel and widefield imaging to Allen CCF',
+        attributes=[
+            NWBAttributeSpec(
+                name='window_center_ml_ccf_mm',
+                doc='Cranial window center location along ML axis in CCF (mm from bregma)',
+                dtype='float'
+            ),
+            NWBAttributeSpec(
+                name='window_center_ap_ccf_mm',
+                doc='Cranial window center location along AP axis in CCF (mm from bregma)',
+                dtype='float'
+            ),
+            NWBAttributeSpec(
+                name='vessel_2p_center_ml_ccf_mm',
+                doc='Center location of the processed whole window vessel 2P image along ML axis in CCF (mm from bregma)',
+                dtype='float'
+            ),
+            NWBAttributeSpec(
+                name='vessel_2p_center_ap_ccf_mm',
+                doc='Center location of the processed whole window vessel 2P image along AP axis in CCF (mm from bregma)',
+                dtype='float'
+            ),
+            NWBAttributeSpec(
+                name='rs_to_ccf_mm_transformation_matrix',
+                doc='Transformation matrix for transforming the processed whole window vessel 2P image to CCF coordinate (mm from bregma)',
+                dtype='float',
+                shape=(3,3)
+            ),
+            NWBAttributeSpec(
+                name='wf_to_rs_transformation_matrix',
+                doc='Transformation matrix for transforming widefield images to the processed whole window vessel 2P image',
+                dtype='float',
+                shape=(3,3)
+            )
+        ],
+    )
+        
     
     # TODO: add all of your new data types to this list
-    new_data_types = [labmetadata_ext]
+    new_data_types = [labmetadata_ext_session, labmetadata_ext_mouse]
 
     # export the spec to yaml files in the spec folder
     output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'spec'))

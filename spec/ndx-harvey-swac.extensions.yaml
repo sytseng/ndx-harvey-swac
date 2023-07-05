@@ -1,8 +1,8 @@
 groups:
 - neurodata_type_def: LabMetaDataSession
   neurodata_type_inc: LabMetaData
-  name: harvey_lab_swac_metadata
-  doc: extension type for storing harvey lab swac metadata metadata
+  name: harvey_lab_swac_metadata_session
+  doc: extension type for storing harvey lab swac metadata for individual sessions
   groups:
   - name: TaskParam
     doc: Parameters of the Virmen maze and task structure
@@ -104,3 +104,40 @@ groups:
       - 3
       doc: Transformation matrix for transforming a column vector of FOV pixel coordiate
         ([x,y,1].T) to [ml, ap, _] in mm in CCF
+- neurodata_type_def: LabMetaDataMouse
+  neurodata_type_inc: LabMetaData
+  name: harvey_lab_swac_metadata_mouse
+  doc: extension type for storing harvey lab swac metadata for individual mice
+  groups:
+  - name: Registration
+    doc: Information of registrating cranial window vessel and widefield imaging to
+      Allen CCF
+    attributes:
+    - name: window_center_ml_ccf_mm
+      dtype: float
+      doc: Cranial window center location along ML axis in CCF (mm from bregma)
+    - name: window_center_ap_ccf_mm
+      dtype: float
+      doc: Cranial window center location along AP axis in CCF (mm from bregma)
+    - name: vessel_2p_center_ml_ccf_mm
+      dtype: float
+      doc: Center location of the processed whole window vessel 2P image along ML
+        axis in CCF (mm from bregma)
+    - name: vessel_2p_center_ap_ccf_mm
+      dtype: float
+      doc: Center location of the processed whole window vessel 2P image along AP
+        axis in CCF (mm from bregma)
+    - name: rs_to_ccf_mm_transformation_matrix
+      dtype: float
+      shape:
+      - 3
+      - 3
+      doc: Transformation matrix for transforming the processed whole window vessel
+        2P image to CCF coordinate (mm from bregma)
+    - name: wf_to_rs_transformation_matrix
+      dtype: float
+      shape:
+      - 3
+      - 3
+      doc: Transformation matrix for transforming widefield images to the processed
+        whole window vessel 2P image
