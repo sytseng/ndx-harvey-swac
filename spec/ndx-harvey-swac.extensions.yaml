@@ -29,6 +29,9 @@ groups:
       dtype: float
       doc: The maximum forwar position that the maze extends (hideCuePast) in Virmen
         unit
+    - name: meter_per_virmen_unit
+      dtype: float
+      doc: The actual length of each Virmen unit in meters
     - name: frac_non_visually_guided_trials
       dtype: float
       doc: The fraction of non visually guided trials

@@ -90,6 +90,11 @@ def main():
                 dtype='float'
             ),
             NWBAttributeSpec(
+                name='meter_per_virmen_unit',
+                doc='The actual length of each Virmen unit in meters',
+                dtype='float',
+            ),
+            NWBAttributeSpec(
                 name='frac_non_visually_guided_trials',
                 doc='The fraction of non visually guided trials',
                 dtype='float'
