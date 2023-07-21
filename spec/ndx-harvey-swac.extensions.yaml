@@ -144,3 +144,12 @@ groups:
       - 3
       doc: Transformation matrix for transforming widefield images to the processed
         whole window vessel 2P image
+  - name: AAVretroInjSite
+    doc: Injection sites of the AAVretro
+    attributes:
+    - name: mTagBFP2
+      dtype: text
+      doc: Injection sites for AAV2retro-Syn-mTagBFP2
+    - name: mScarlet
+      dtype: text
+      doc: Injection sites for AAV2retro-Syn-mScarlet

@@ -267,7 +267,22 @@ def main():
         ],
     )
         
-    
+    labmetadata_ext_mouse.add_group(
+        name='AAVretroInjSite',
+        doc='Injection sites of the AAVretro',
+        attributes=[
+            NWBAttributeSpec(
+                name='mTagBFP2',
+                doc='Injection sites for AAV2retro-Syn-mTagBFP2',
+                dtype='text'
+            ),
+            NWBAttributeSpec(
+                name='mScarlet',
+                doc='Injection sites for AAV2retro-Syn-mScarlet',
+                dtype='text'
+            )
+        ],
+    )    
     # TODO: add all of your new data types to this list
     new_data_types = [labmetadata_ext_session, labmetadata_ext_mouse]
 
