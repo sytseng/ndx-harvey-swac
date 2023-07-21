@@ -1,10 +1,10 @@
 # ndx-harvey-swac Extension for NWB
 
-This is a Neurodata Extension (NDX) for Neurodata Without Borders: Neurophysiology (NWB:N) 2.0 for reading lab metadata in the DANDI dataset of the SWAC project in Harvey Lab, Harvard Medical School.
+This is a Neurodata Extension (NDX) for Neurodata Without Borders: Neurophysiology (NWB:N) 2.0 for reading lab metadata in the DANDI dataset "Two-photon calcium imaging of mouse posterior cortical areas during dynamic navigation decisions (Tseng et al., 2022, Neuron)" from the Harvey Lab in Harvard Medical School.
 
 Link to the DANDI dataset:
 
-To be added
+https://dandiarchive.org/dandiset/000579
 
 Reference:
 
