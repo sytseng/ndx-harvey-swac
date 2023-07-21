@@ -283,6 +283,7 @@ def main():
             )
         ],
     )    
+    
     # TODO: add all of your new data types to this list
     new_data_types = [labmetadata_ext_session, labmetadata_ext_mouse]
 
